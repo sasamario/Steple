@@ -40,7 +40,7 @@
         <div class="card mb-3">
             <div class="card-header">合計歩数</div>
             <div class="card-body mx-auto">
-
+                合計歩数は、{{$totalSteps}}歩です！
             </div>
         </div>
 
@@ -71,9 +71,31 @@
                     </tr>
                     </thead>
                     <tbody>
-
+                    @foreach($steps as $item)
+                        <tr>
+                            <td class="table-text">{{$item->date}}</td>
+                            <td class="table-text">{{$item->steps}}</td>
+                            <td>
+                                <form action="" method="post" class="mb-0">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="step_id" value="{{$item->step_id}}">
+                                    <button type="submit" class="btn btn-info">編集</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="post" class="mb-0">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="step_id" value="{{$item->step_id}}">
+                                    <button type="submit" class="btn btn-danger">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
+                <div class="mt-1 mb-1 row justify-content-center">
+                    {{ $steps->links() }}
+                </div>
             </div>
         </div>
     </div>
