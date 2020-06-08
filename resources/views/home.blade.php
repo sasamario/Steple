@@ -47,7 +47,7 @@
         <div class="card mb-3">
             <div class="card-header">歩数追加フォーム</div>
             <div class="card-body mx-auto">
-                <form action="" method="post" class="form-inline">
+                <form action="{{ route('add') }}" method="post" class="form-inline">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="steps">歩数：</label>
