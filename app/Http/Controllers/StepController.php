@@ -28,4 +28,15 @@ class StepController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $steps = $this->stepService->readStep();
+        $totalSteps = $this->stepService->readTotalStep();
+
+        return view('home', compact('steps', 'totalSteps'));
+    }
 }
