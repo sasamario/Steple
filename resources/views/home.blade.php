@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-{{--@include('layouts.error')--}}
+@include('layouts.error')
 
 @section('content')
     <div class="container mb-5">
