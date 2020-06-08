@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //ユーザートップページへのルート
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'StepController@index')->name('home');
 
 //歩数追加時のルート
 Route::post('/home/add', 'StepController@add')->name('add');
