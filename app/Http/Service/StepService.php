@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class StepService
 {
+    /**
+     * @param StepRequest $request
+     */
     public function addStep(StepRequest $request): void
     {
         Step::create([
