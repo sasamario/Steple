@@ -105,9 +105,15 @@
     <div class="right-content col-md-5">
         <div class="card">
             <div class="card-header">ランキング（合計歩数）</div>
-
             <div class="card-body">
-
+                @foreach($rankingSteps as $item)
+                    <div class="card mb-3">
+                        <div class="card-header">{{$item->number}}位</div>
+                        <div class="card-body mx-auto">
+                            {{$item->name}}さん　{{$item->totalSteps}}歩
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
