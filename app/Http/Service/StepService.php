@@ -5,6 +5,7 @@ namespace App\Http\Service;
 use App\Http\Requests\EditStepRequest;
 use App\Http\Requests\StepRequest;
 use App\Step;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -82,6 +83,35 @@ class StepService
     public function deleteStep(Request $request): void
     {
         Step::where('step_id', $request->step_id)->where('user_id', Auth::id())->delete();
+    }
+
+    /**
+     * @param string $orderBy
+     * @return Builder
+     */
+    private function getSteps(string $orderBy): Builder
+    {
+        return Step::where('user_id', Auth::id())->orderBy('date', $orderBy);
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getRecentSteps(): Collection
+    {
+        return $this->getSteps('desc')->limit(7)->get();
+    }
+
+    /**
+     * @param Request $request
+     * @return Collection
+     */
+    public function getStepsBetween(Request $request): Collection
+    {
+        return $this->getSteps('asc')
+            ->where('date', '>=',$request->from)
+            ->where('date', '<=', $request->until)
+            ->get();
     }
 
 }
