@@ -75,4 +75,13 @@ class StepService
                 'steps' => $request->steps,
             ]);
     }
+
+    /**
+     * @param Request $request
+     */
+    public function deleteStep(Request $request): void
+    {
+        Step::where('step_id', $request->step_id)->where('user_id', Auth::id())->delete();
+    }
+
 }
