@@ -80,4 +80,21 @@ class StepController extends Controller
         return redirect()->route('home');
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function passSteps()
+    {
+        return response()->json($this->stepService->getRecentSteps()->sortBy('date')->values());
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function passStepsBetween(Request $request)
+    {
+        return response()->json($this->stepService->getStepsBetween($request));
+    }
+
 }
