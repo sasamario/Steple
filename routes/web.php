@@ -30,3 +30,6 @@ Route::post('/home/edit', 'StepController@edit')->name('edit');
 
 //歩数更新時のルート
 Route::post('/home/update', 'StepController@update')->name('update');
+
+//歩数データ削除時のルート
+Route::post('/home/delete', 'StepController@delete')->name('delete');
