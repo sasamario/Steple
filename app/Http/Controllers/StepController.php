@@ -36,7 +36,8 @@ class StepController extends Controller
     {
         $steps = $this->stepService->readStep();
         $totalSteps = $this->stepService->readTotalStep();
+        $rankingSteps = $this->stepService->readRankingStep();
 
-        return view('home', compact('steps', 'totalSteps'));
+        return view('home', compact('steps', 'totalSteps', 'rankingSteps'));
     }
 }
