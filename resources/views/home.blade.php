@@ -76,7 +76,7 @@
                             <td class="table-text">{{$item->date}}</td>
                             <td class="table-text">{{$item->steps}}</td>
                             <td>
-                                <form action="" method="post" class="mb-0">
+                                <form action="{{route('edit')}}" method="post" class="mb-0">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="step_id" value="{{$item->step_id}}">
                                     <button type="submit" class="btn btn-info">編集</button>
