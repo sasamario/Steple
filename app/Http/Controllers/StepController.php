@@ -68,4 +68,16 @@ class StepController extends Controller
 
         return redirect()->route('home');
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(Request $request)
+    {
+        $this->stepService->deleteStep($request);
+
+        return redirect()->route('home');
+    }
+
 }
