@@ -83,7 +83,7 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="" method="post" class="mb-0">
+                                <form action="{{route('delete')}}" method="post" class="mb-0">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="step_id" value="{{$item->step_id}}">
                                     <button type="submit" class="btn btn-danger">削除</button>
