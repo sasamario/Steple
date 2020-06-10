@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Steple</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -48,7 +48,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 13px;
@@ -81,18 +81,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Welcome to <strong>Steple</strong>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="detail">
+                    <p><strong>『Steple』</strong>は、歩数（Step）を簡単（Simple）に管理したいという想いからこの名前にしました。<br/>
+                        2020年4月より緊急事態宣言が発表されリモートワークを行う方が増えていきました。<br/>
+                        そのため、働き手の運動不足がより目立つようになりました。<br/>
+                        そこで簡単に歩数を管理でき、 グラフでのデータ表示による視覚的達成感やランキング機能によるゲーム性を持たせることで、<br/>
+                        楽しく運動を続けてもらえるようにと工夫をしながら開発を行いました。</p>
                 </div>
             </div>
         </div>
