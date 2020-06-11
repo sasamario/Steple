@@ -49752,6 +49752,107 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/chart.js":
+/*!*******************************!*\
+  !*** ./resources/js/chart.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//myChart.destroy()を使用するために、グローバル変数にする
+var myChart; //ユーザトップページ遷移後のグラフ描画処理
+
+$(document).ready(function () {
+  var url = 'home/graph';
+  drawGraph(url);
+}); //日付指定でのグラフ描画処理
+
+$('#switch_button').click(function () {
+  var from = document.forms.switch_form.from.value;
+  var until = document.forms.switch_form.until.value;
+  var url = 'home/graph/switch';
+  var switchDate = {
+    from: from,
+    until: until
+  };
+  drawGraph(url, switchDate);
+}); //グラフ描画処理
+
+function drawGraph(url) {
+  var switchDate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  $.ajax({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    type: 'GET',
+    url: url,
+    dataType: 'json',
+    data: switchDate
+  }).done(function (response) {
+    console.log(response);
+    var responseDate = [];
+    var responseSteps = []; //受け取った歩数データを、配列に入れる
+
+    for (var i = 0; i < Object.keys(response).length; i++) {
+      responseDate.push(response[i].date);
+      responseSteps.push(response[i].steps);
+    }
+
+    var element = document.getElementById("myChart"); //グラフデータが残っている場合、データの破棄
+
+    if (myChart) {
+      myChart.destroy();
+    }
+
+    myChart = new Chart(element, {
+      type: 'bar',
+      data: {
+        labels: responseDate,
+        datasets: [{
+          label: '歩数',
+          data: responseSteps,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          colorschemes: {
+            scheme: 'brewer.Greens3'
+          }
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              // 軸ラベル
+              display: true,
+              // 表示設定
+              labelString: '日付',
+              // ラベル
+              fontSize: 14 // フォントサイズ
+
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            },
+            scaleLabel: {
+              display: true,
+              labelString: '歩数（step）',
+              fontSize: 14
+            }
+          }]
+        }
+      }
+    });
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue ***!
@@ -49833,13 +49934,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!*************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/js/chart.js ./resources/sass/app.scss ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\Steple\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\xampp\htdocs\Steple\resources\js\chart.js */"./resources/js/chart.js");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\Steple\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
