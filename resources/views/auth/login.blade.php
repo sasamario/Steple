@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row mb-0">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -36,6 +36,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <p class="mb-0 my-2">テストログイン用メールアドレス<br/>
+                                e-mail:test@test.jp / passward:testtest</p>
                             </div>
                         </div>
 
