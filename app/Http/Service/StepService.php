@@ -44,22 +44,17 @@ class StepService
     }
 
     /**
-     * @return Collection
+     * @return Array
      */
-    public function readRankingStep(): Collection
+    public function readRankingStep(): Array
     {
-//        return Step::join('users', 'steps.user_id', '=', 'users.id')
-//            ->select(DB::raw('name, sum(steps) as totalSteps, row_number() over(order by sum(steps) desc) as number'))
-//            ->groupBy('user_id')
-//            ->orderBy('totalSteps', 'desc')
-//            ->limit(5)
-//            ->get();
         return Step::join('users', 'steps.user_id', '=', 'users.id')
             ->select(DB::raw('name, sum(steps) as totalSteps'))
             ->groupBy('user_id')
             ->orderBy('totalSteps', 'desc')
             ->limit(5)
-            ->get();
+            ->get()
+            ->toArray();
     }
 
     /**

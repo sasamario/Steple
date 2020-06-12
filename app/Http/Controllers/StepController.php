@@ -39,7 +39,14 @@ class StepController extends Controller
     {
         $steps = $this->stepService->readStep();
         $totalSteps = $this->stepService->readTotalStep();
-        $rankingSteps = $this->stepService->readRankingStep();
+        $ranking = $this->stepService->readRankingStep();
+        //本番環境のDBのバージョン上SQL文で分析関数が使えなかったため、本番環境ではこちらで順位付けを行う
+        $rank = 0;
+        foreach ($ranking as $item) {
+            $rank = $rank + 1;
+            $item['rank'] = $rank;
+            $rankingSteps[] = $item;
+        }
 
         return view('home', compact('steps', 'totalSteps', 'rankingSteps'));
     }
