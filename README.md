@@ -21,8 +21,8 @@ Stepleとは、歩数を簡単に、楽しく管理できるツールです。
 ・ページネーション機能
 
 ## 使用言語とツール
-・PHP　7.3.3
-・Laravel　7.11.0
+・PHP:7.3.3
+・Laravel:7.11.0
 ・Javascript
 ・bootstrap4
 ・Chart.js
