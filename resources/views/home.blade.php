@@ -106,21 +106,21 @@
         <div class="card">
             <div class="card-header"><i class="fas fa-crown"></i> ランキング</div>
             <div class="card-body">
-{{--                @foreach($rankingSteps as $item)--}}
-{{--                    <div class="card mb-3">--}}
-{{--                        @if ($item->number == 1)--}}
-{{--                            <div class="card-header">{{$item->number}}位</div>--}}
-{{--                            <div class="card-body mx-auto">--}}
-{{--                                <i class="fas fa-crown fa-2x text-warning"></i> {{$item->name}}さん　{{$item->totalSteps}}歩--}}
-{{--                            </div>--}}
-{{--                        @else--}}
-{{--                            <div class="card-header">{{$item->number}}位</div>--}}
-{{--                            <div class="card-body mx-auto">--}}
-{{--                                {{$item->name}}さん　{{$item->totalSteps}}歩--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
-{{--                    </div>--}}
-{{--                @endforeach--}}
+                @foreach($rankingSteps as $item)
+                    <div class="card mb-3">
+                        @if ($item->number == 1)
+                            <div class="card-header">{{$item->number}}位</div>
+                            <div class="card-body mx-auto">
+                                <i class="fas fa-crown fa-2x text-warning"></i> {{$item->name}}さん　{{$item->totalSteps}}歩
+                            </div>
+                        @else
+                            <div class="card-header">{{$item->number}}位</div>
+                            <div class="card-body mx-auto">
+                                {{$item->name}}さん　{{$item->totalSteps}}歩
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
