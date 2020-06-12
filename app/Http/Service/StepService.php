@@ -55,7 +55,7 @@ class StepService
 //            ->limit(5)
 //            ->get();
         return Step::join('users', 'steps.user_id', '=', 'users.id')
-            ->select(DB::raw('name, sum(steps) as totalSteps, rank() over(order by sum(steps) desc) as number'))
+            ->select(DB::raw('name, sum(steps) as totalSteps'))
             ->groupBy('user_id')
             ->orderBy('totalSteps', 'desc')
             ->limit(5)
